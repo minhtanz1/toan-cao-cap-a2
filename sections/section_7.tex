@@ -1,0 +1,81 @@
+\section{\S 7: Hệ phương trình tuyến tính}
+\subsection{Các khái niệm}
+\begin{enumerate}
+	\item \textbf{Định nghĩa:} Một hệ phương trình tuyến tính gồm \( m \) phương trình và \( n \) ẩn có dạng:
+	\[
+	(I) \begin{cases} 
+		a_{11}x_{1} + a_{12}x_{2} + \dots + a_{1n}x_{n} &= b_1  \\
+		a_{21}x_{1} + a_{22}x_{2} + \dots + a_{2n}x_{n} &= b_2  \\
+		\vdots  & \vdots  \\
+		a_{m1}x_{1} + a_{m2}x_{2} + \dots + a_{mn}x_{n} &= b_m  
+	\end{cases}
+	\] \\
+	*$a_{ij}; b_1, _b2, \dots$ là hệ số hằng \\
+	*$x_1, x_2, \dots x_n$ là \(n\) ẩn của hệ \((I)\) \\
+	*Nghiệm của hệ \((I)\) là \(n\) ẩn số: \((C_1, C_2, \dots C_n)\) sao cho khi thay \(x_k = C_k\) vào hệ thì có vế trái = vế phải \\
+	*Khi \(b_1=b_2=\dots b_m = 0\) thì \((I)\) gọi là hệ \underline{phương trình thuần nhất}
+	\item Dạng ma trận của hệ \((I)\) \\
+	$\Leftrightarrow (I) \begin{bmatrix}
+		a_{11} & a_{12} & \cdots & a_{1n} \\
+		a_{21} & a_{22} & \cdots & a_{2n} \\
+		\vdots & \vdots & \ddots  & \vdots \\
+		a_{n1} & a_{n2} & \cdots & a_{nn} \\
+	\end{bmatrix}
+	 \times \begin{bmatrix}
+		x_1\\
+		x_2\\
+		\vdots\\
+		x_n
+	\end{bmatrix}= \begin{bmatrix}
+		b_1\\
+		b_2\\
+		\vdots\\
+		b_m
+	\end{bmatrix}$\\
+	$\Leftrightarrow$ \boxed{A.X=B} \\
+	\begin{tikzpicture}
+		\draw[pattern=north west lines, pattern color=blue] (0,0) rectangle (1em,1em);
+	\end{tikzpicture}
+	\textbf{Cách đọc tên} \\
+	\begin{itemize}[label=*]
+		\item $A=(a_{ij})_{m\times n}$ đọc là \textbf{ma trận hệ số} \((I)\)
+		\item $X=\begin{bmatrix}
+			x_1\\
+			x_2\\
+			\vdots\\
+			x_n
+		\end{bmatrix}$ ma trận cột ẩn số
+		\item $B=\begin{bmatrix}
+			b_1\\
+			b_2\\
+			\vdots\\
+			b_m
+		\end{bmatrix}$ ma trận cột số tự do
+		\item \color{red} Đặt $A_B = (A|B)$ gọi là ma trận bổ sung (hay mở rộng) của hệ \((I)\)
+	\end{itemize}
+\end{enumerate}
+\subsection{Hệ vuông}
+\textit{Là hệ có số phương trình = số ẩn} \\
+\underline{\textbf{\textit{Cách giải}}}\\
+Cho hệ vuông $n_{pt}$ và $n_{\text{ẩn}}$: \(A.X=B\). Dùng quy tắc Cramer \textit{giải hệ vuông}
+\begin{enumerate}[label=B\arabic{enumi}:,leftmargin=*]
+	\item Tính các định thức $D=\det(A)$ và $D_j = \det(A)^j$. Với $j=1,2,\dots,n$. Trong đó: \(\det{A}^j\) nhận từ $\det{A}$ bằng cách thay cột thứ j trong $\det A$ bởi cột hệ số B.
+	\item Kết luận \\
+	+)TH1: Nếu $\det A \neq 0 \Rightarrow$ hệ vuông có nghiệm duy nhất. \\
+		\quad $x_1= \frac{D_1}{D}, x_2=\frac{D_2}{D}, \dots, x_n = \frac{D_n}{D}$ \\
+	+)TH2: Nếu $\det A = 0$ và có \dbox{\textbf{một}} cái $D_j \neq 0 \Rightarrow$ hệ vô nghiệm \\
+	+)TH3: Nếu $\det A=0$ và có \dbox{\textbf{tất cả}} $D_j = 0 \forall j \Rightarrow$ hệ vô định.
+\end{enumerate}
+\subsection{Hệ phương trình tuyến tính tổng quát}
+\textit{Cho hệ $m_{pt}$ và $n_{ẩn}$ (vuông hoặc không)} \boxed{A.X = B} \\
+\underline{\textbf{\textit{Cách giải:}}} \textit{Dùng phương pháp Gauss}
+\begin{enumerate}[label=B\arabic{enumi}:, leftmargin=*]
+	\item Lập ma trận bổ sung của hệ $A_B=(A|B)$\\
+	Biến đổi đưa $A_B$ về bậc thang
+	\item Biện luận \\
+	*TH1: Nếu $r(A) \neq r(A_B) \Rightarrow$ hệ vô nghiệm \\
+	*TH2: Nếu thấy $r(A) = r(A_B) = n \Leftrightarrow $ hệ có nghiệm \\
+	a) Nếu $r(A) = r(A_B)=n$ (=n số ẩn) $thì$ hệ có nghiệm duy nhất\\
+	b) Nếu $r(A) = r(A_B) = S < n (\text{sổ ẩn})\Rightarrow$ hệ có vô số nghiệm, với $n_{ẩn}$ nhận giá trị tùy ý.  \\
+\end{enumerate}
+

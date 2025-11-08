@@ -1,0 +1,43 @@
+\section{\S 6: Các phép biến sơ cấp}
+\subsection{Phép biến đổi sơ cấp gồm 3 loại:}
+\begin{enumerate}
+	\item Đổi vị trí 2 dòng của ma trận
+	\item Nhân 1 dòng với một số $\neq 0$
+	\item Lấy dòng này + hoặc - với k lần dòng khác.
+\end{enumerate}
+\subsection{Ứng dụng}
+\subsubsection{Ứng dụng tìm ma trận nghịch đảo $A^{-1}$}
+$ (A_{n \times n} | I_n) \rightarrow \cdots \rightarrow (I | A^{-1})$
+\subsubsection{Ứng dụng tìm hạng (Rank) ma trận}
+\begin{enumerate}
+	\item Ma trận có dạng \textbf{Bậc thang.} \\
+	% https://tex.stackexchange.com/a/522153
+	$\left[\;
+	\begin{NiceArray}{cccc}[name=B]
+		a_{11} & a_{12} & a_{13} & a_{14} \\
+		0 & a_{22} & a_{23} & a_{24} \\
+		0 & 0 & a_{33} & a_{34} \\
+		0 & 0 & 0 & a_{44} 
+	\end{NiceArray}
+	\;\right]
+	\begin{tikzpicture}[remember picture, overlay,
+		c/.style={fit={(B-#1)},circle,draw,thick,inner sep=0.005em,node contents={}}]
+		\path foreach \X in {1-1,2-2,3-3,4-4} {node [c=\X]};
+		
+		% Vẽ đường gạch ngang phân tách
+		\draw[very thin,gray] 
+		let \p1=($(B-1-2.south west)-(B-2-1.north east)$) in
+		([xshift=-\x1/2,yshift=-2*\y1/3]B-1-1.south west) 
+		-| ([xshift=-\x1/2,yshift=-2*\y1/3]B-2-2.south west)
+		-| ([xshift=-\x1/2,yshift=-2*\y1/3]B-3-3.south west)
+		-| ([xshift=-\x1/2,yshift=-2*\y1/3]B-4-4.south west);
+	\end{tikzpicture}$ \\
+	$\begin{bmatrix}
+		0 & a_{12} & a_{13} & a_{14} \\
+		0 & 0 & 0 & a_{23} \\
+		0 & 0 & 0 & 0 \leftarrow \text{Dòng zero}
+	\end{bmatrix}$ \\
+	*Quy ước dòng zero phải nằm dưới dòng $\neq$ zero
+	\item Mọi ma trận kích cỡ tùy ý đều đưa về dạng bậc thang bởi các phép biến đổi trên dòng.
+	\item Hạng (Rank) của ma trận cho $A=[a_{ij}]_{m \times n}$ ma trận tùy ý. Hạng của A là số lượng dòng $\neq$ zero của ma trận bậc thang tương ứng. Hạng (A) = $r(A)$
+\end{enumerate}

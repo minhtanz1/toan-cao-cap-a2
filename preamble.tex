@@ -1,5 +1,6 @@
 % Package imports
 \usepackage{amssymb,amsmath,amsthm,amsfonts}
+\usepackage{amsmath}
 \usepackage{multicol,multirow}
 \usepackage{spverbatim}
 \usepackage{graphicx}
@@ -11,12 +12,24 @@
 % \usepackage{fontspec}
 \usepackage[vietnamese]{babel}
 \usepackage{microtype}
+\usepackage{mathtools}
+\usepackage{array}
+\usepackage{calc}
+\usepackage{pgf}
+\usepackage{pgfplots}
 \usepackage{academicons}
 \usepackage{xcolor}
 \usepackage{titlesec}
 \usepackage[bb=boondox]{mathalfa}
 \usepackage{tikz}
+\usepackage{lipsum}   % Package tạo nội dung giả (chỉ để test)
+\usepackage{titling}  % Hỗ trợ tùy chỉnh tiêu đề
+\usetikzlibrary{calc, fit}
+\usetikzlibrary{patterns}
+\usepackage{nicematrix}
+\usepackage{dashbox}
 \usetikzlibrary{matrix,arrows.meta,positioning}
+\usepackage[ruled,vlined]{algorithm2e}
 % Define colors
 \definecolor{olgreen}{HTML}{4f9c45}
 % Microtype fix (keep as-is)
@@ -75,6 +88,11 @@
 
 \makeatother
 \newcommand\bigzero{\makebox(0,0){\text{\huge\itshape0}}}
+\NiceMatrixOptions
+{ pgf-node-code = \pgfsetfillcolor{white} \pgfusepathqfill }
+
+\pgfset{nicematrix/cell-node/.append style = { inner sep = 1pt } }
+
 % Paragraph settings
 \setcounter{secnumdepth}{0}
 \setlength{\parindent}{0pt}
@@ -82,5 +100,14 @@
 \everymath{\displaystyle}
 
 % custom itemize
-
+\usepackage{enumitem}
+\setlist{nolistsep} %https://stackoverflow.com/a/1073140/19806726
+\setlist{nosep}
 \setlist[itemize]{topsep=0pt, partopsep=0pt,itemsep=0pt}
+
+
+\SetAlgorithmName{Thuật toán}{}{}
+\SetKwInput{KwIn}{Dữ liệu vào}
+\SetKwInput{KwOut}{Dữ liệu ra}
+\SetKwIF{If}{ElseIf}{Else}{Nếu}{thì}{ngược lại nếu}{ngược lại}{kết thúc nếu}
+\SetKw{Return}{Trả về}

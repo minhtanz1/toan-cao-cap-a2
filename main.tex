@@ -1,23 +1,31 @@
 \documentclass[12pt,landscape,a4paper]{article}
 
+
 % Include preamble with all packages and configurations
 \input{preamble}
 
 \begin{document}
 \footnotesize
-\begin{center}
-  {\large\bfseries Toán cao cấp A2} \\
-\end{center}
+
+
 \setlength{\premulticols}{0pt}
 \setlength{\postmulticols}{0pt}
 \setlength{\multicolsep}{2pt}
 \setlength{\columnseprule}{0.4pt}
 \setlength{\columnsep}{10pt}
 \begin{multicols}{3}
-
+\begin{center}
+	{\large\bfseries Toán cao cấp A2} \\ % In tiêu đề lớn hơn
+	\vspace{0.5em} % Điều chỉnh khoảng cách
+	{\small GV: Đặng Văn Quý \\ Phạm Minh Tấn} % Hiển thị tác giả
+\end{center}
 % Include all section files
-\input{sections/section_1}  % What is LaTeX
-\input{sections/section_2}  % Mathematics
+\input{sections/section_1}  
+\input{sections/section_2}  
 \input{sections/section_3}
+\input{sections/section_4}
+\input{sections/section_5}
+\input{sections/section_6}
+\input{sections/section_7}
 \end{multicols}
 \end{document}

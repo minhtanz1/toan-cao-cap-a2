@@ -1,0 +1,36 @@
+\section{\S 4: Ma trận nghịch đảo của ma trận vuông}
+\subsection{Định nghĩa}
+Cho $A=[a_{ij}]_{n \times n}$ ma trận vuông cấp n. Nếu tồn tại ma trận B vuông cấp n thỏa: \boxed{A.B = B.A = I_N} thì B gọi là ma trận nghịch đảo của ma trận A. \\
+Kí hiệu B bởi $A^{-1}$ Vậy \boxed{A.A^{-1} = A^{-1}.A = I_n} \\
+*Nhận xét: \\
+Lấy $\det$ hai vế:
+$\det{A.A^{-1}} = \det{I_n}
+\Rightarrow \det{A} \times \det{A^{-1}} = 1
+\Rightarrow$ \boxed{\det{A^{-1}} = \frac{1}{\det{A}}} Tính chất đẹp 
+
+
+\begin{algorithm}[H]
+	\caption{Thuật toán tìm $A^{-1}$}
+	\KwIn{$A=[a_{ij}]_{n \times n}$ ma trận vuông cấp n.}
+	\KwOut{Ma trận nghịch đảo $A^{-1}$ nếu tồn tại, ngược lại thông báo lỗi}
+	
+	Tính $\det(A)$\;
+	\eIf{$\det(A) = 0$}{
+		\Return "Ma trận $A$ không khả nghịch."\;
+	}{
+		Tính nghịch đảo: \boxed{A^{-1} = \frac{1}{\det(A)} P_A}\;
+		Tìm\textbf{ ma trận phụ hợp} của $A$, ký hiệu $P_A$\;
+		\Return $A^{-1}$\;
+	}
+\end{algorithm}
+\begin{tikzpicture}
+	\draw[pattern=north west lines, pattern color=blue] (0,0) rectangle (1em,1em);
+\end{tikzpicture}
+\textbf{Cách xác định $P_A$} \\
+$P_A= \begin{bmatrix}
+	A_{11} & A_{12} & \cdots & A_{1n} \\
+	A_{21} & A_{22} & \cdots & A_{2n} \\
+	\vdots & \vdots & \ddots  & \vdots \\
+	A_{n1} & A_{n2} & \cdots & A_{nn} \\
+\end{bmatrix}^\intercal$ \\
+Với $A_{ij} = (-1)^{i+j}.M_{ij}$ là "\textbf{phần bù đại số}" của $a_{ij} \in A$

@@ -1,2 +1,189 @@
 \section{\S 3: Định thức của ma trận vuông}
-\subsection{Định nghĩa}
+\subsection{Định thức cấp 1}
+Cho $A=[a_{11}]_{1 \times 1}$ ma  trận cấp 1: \\
+Ta có: $\det{A} = |A_{11}| = a_{11}$ (= chính nó)
+\subsection{Định thức cấp 2}
+$\begin{bmatrix}
+	a_{11} & a_{12}\\
+	a_{21} & a_{22}  \\
+\end{bmatrix}_{2\times 2}$ ma trận vuông cấp 2 \\
+$\det{(A)} =$ 
+$\begin{NiceArray}{|cc|}
+	\CodeBefore [create-cell-nodes]
+	\begin{tikzpicture} [shorten < = 2pt,shorten > = 2pt]
+		\draw [red,->] (1-1) -- (2-2) -- ++(1.5em, -1em) node[below, scale=0.7] {\(+\)};
+		\draw [blue,->] (2-1) -- (1-2) -- ++(1.5em, 1em) node[above, scale=0.7] {\(-\)} ;
+	\end{tikzpicture}
+	\Body
+	a_{11} & a_{12}\\[2mm]
+	a_{21} & a_{22}\\[2mm]
+\end{NiceArray}$
+
+\subsection{Định thức cấp 3}
+$\begin{bmatrix}
+	a_{11} & a_{12} & a_{13} \\
+	a_{21} & a_{22} & a_{23} \\
+	a_{31} & a_{32} & a_{33}
+\end{bmatrix}_{3 \times 3}
+=
+\begin{aligned}
+	&\overbrace{(-1)^{1+1} \cdot a_{11} \cdot \underbrace{\begin{vmatrix}
+				a_{22} & a_{23} \\
+				a_{32} & a_{33}
+		\end{vmatrix}}_{M_{11}}}^{A_{11}} \\
+	&+ \overbrace{(-1)^{1+2} \cdot a_{12} \cdot \underbrace{\begin{vmatrix}
+				a_{21} & a_{23} \\
+				a_{31} & a_{33}
+		\end{vmatrix}}_{M_{12}}}^{A_{12}} \\
+	&+ \overbrace{(-1)^{1+3} \cdot a_{13} \cdot \underbrace{\begin{vmatrix}
+				a_{21} & a_{22} \\
+				a_{31} & a_{32}
+		\end{vmatrix}}_{M_{13}}}^{A_{13}}
+\end{aligned}$ \\
+$=a_{11}.A_{11} + a_{12}.A_{12} + a_{13}.A_{13}$ \\
+*Đặt $\boxed{A_{ij}=(-1)^{ij}M_{ij}}$ gọi là \textbf{"phần bù đại số"} của phần tử $a_{ij}$\\
+*$M_{11}, M_{12}, M_{13}, ... M_{ij}$ gọi là \textbf{"định thức con"} của det(A). Nó nhận từ det(A) bằng cách bỏ đi dòng i và cột j tương ứng.  \\
+\begin{tikzpicture}
+	\draw[pattern=north west lines, pattern color=blue] (0,0) rectangle (1em,1em);
+\end{tikzpicture}
+\textbf{Cần biết} \\
+Cách tính trên gọi là khai triển theo dòng 1. Có thể chọn dòng hoặc cột tùy ý để khai triển. \\
+\textbf{Mẹo}: Để giảm bớt tính toán thường chọn dòng hoặc cột chứa nhiều số 0 nhất để khai triển. \\
+- Định thức cấp 3 tính theo sơ đồ Sarrus như sau: \\
+
+$\begin{NiceArray}{|ccc|>{\color{gray}}c>{\color{gray}}c}
+	\CodeBefore [create-cell-nodes]
+	\begin{tikzpicture} [shorten < = 2pt,shorten > = 2pt]
+		\draw [red,->] (1-1) -- (3-3) -- ++(1.5em, -1em) node[below, scale=0.7] {\(+\)};
+		\draw [red,->] (1-2) -- (3-4) -- ++(1.5em, -1em) node[below, scale=0.7] {\(+\)};
+		\draw [red,->] (1-3) -- (3-5) -- ++(1.5em, -1em) node[below, scale=0.7] {\(+\)};
+		\draw [blue,->] (3-1) -- (1-3) -- ++(1.5em, 1em) node[above, scale=0.7] {\(-\)};
+		\draw [blue,->] (3-2) -- (1-4) -- ++(1.5em, 1em) node[above, scale=0.7] {\(-\)};
+		\draw [blue,->] (3-3) -- (1-5) -- ++(1.5em, 1em) node[above, scale=0.7] {\(-\)} ;
+	\end{tikzpicture}
+	\Body
+	a_{11} & a_{12} & a_{13} & a_{11} & a_{12} \\[2mm]
+	a_{21} & a_{22} & a_{23} & a_{21} & a_{22} \\[2mm]
+	a_{31} & a_{32} & a_{33} & a_{31} & a_{32} \\
+\end{NiceArray}$ \\
+
+$\Rightarrow\det{(A) = + a_{11}a_{22}a_{33} + a_{12}a_{23}a_{31} + a_{13}a_{21}a_{32}} - \color{blue} a_{31}a_{22}a_{13} - a_{32}a_{23}a_{11} - a_{33}a_{21}a_{12}$
+\subsection{Định thức cấp n}
+Cho $A=(a_{ij})_{n \times n}$ ma trận vuông cấp n khi đó:\\
+$\det{(A)} = a_{11}.A_{11} + a_{12}.A_{12} + \cdots + a_{1n}.A_{1n}$ (khai triển theo dòng 1)
+\subsection{Tính chất định thức}
+\begin{enumerate}[label=*T/c \arabic{enumi}:,leftmargin=*]
+	\item $\det{(A)^\intercal} = \det{(A)}$
+	\item 
+	\begin{itemize}[label=-, leftmargin=*]
+		\item Định thức = 0 khi có dòng và cột chứa toàn số 0
+		\item Định thức = 0 khi có hai dòng hoặc hai cột giống nhau hoặc tỉ lệ nhau.
+		\begin{tikzpicture}[baseline=(A.center), every node/.style={inner sep=1pt, font=\small}]
+			\matrix (A) [matrix of math nodes,
+			left delimiter={|},
+			right delimiter={|},
+			row sep=1em
+			] {
+				a & b & c \\
+				2 & -1 & 7\\
+				4 & -2 & 14\\
+			};
+			
+			% Replace matrix B with a node displaying 0
+			\node[right=.3cm of A] (B) {$=0$};
+			
+			% Change arrow head style by setting >=latex
+			\draw[arrows = {-Stealth[]}, bend left=45]
+			([xshift=-5mm] A-3-1.west)
+			to node[sloped, above, pos=0.5] {\tiny {Tỉ lệ}}
+			([xshift=-5mm] A-2-1.west);
+		\end{tikzpicture}
+		
+	\end{itemize}
+	\item (Nhớ) khi đổi vị trí 2 dòng hoặc 2 cột thì định thức đổi dấu.
+	\begin{tikzpicture}[baseline=(C.center), every node/.style={inner sep=1pt, font=\small}]
+		% First matrix named C
+		\matrix (C) [matrix of math nodes,
+		left delimiter={|},
+		right delimiter={|},
+		row sep=1em, column sep=1em] {
+			a & b  \\
+			x & y  \\
+		};
+		
+		% Equals sign in its own node
+		\node[right=0.5cm of C] (eq) {$=-$};
+		
+		% Second matrix named D
+		\matrix (D) [matrix of math nodes,
+		left delimiter={|},
+		right delimiter={|},
+		right=0.3cm of eq,
+		row sep=1em, column sep=1em] {
+			x & y  \\
+			a & b  \\
+		};
+		
+		% Draw a double-headed arrow on the first matrix (C)
+		\draw[<->, bend left=45]
+		([xshift=.5cm] C-1-2.west)
+		to node[sloped, above, pos=0.5] {}
+		([xshift=.5cm] C-2-2.west);
+		
+	\end{tikzpicture}
+	\item Thừa số chung trên 1 dòng hoặc cột đưa được khỏi dấu định thức thành tích số. \\
+	 $\begin{vmatrix}
+		ka & kb & kc \\
+		x & y & z \\
+		\alpha u & \alpha v & \alpha w \\
+	\end{vmatrix} = k\alpha  \begin{vmatrix}
+		a & b & c \\
+		x & y & z \\
+		u & v & w \\
+	\end{vmatrix}$
+	\item Tách\\
+	$\begin{vmatrix}
+		a & b & c \\
+		x_1 + y_1 & x_2+y_2 & x_3+y_3 \\
+		u & v & w \\
+	\end{vmatrix} = \begin{vmatrix}
+		a & b & c \\
+		x_1& x_2& c_3\\
+		u & v & w \\
+	\end{vmatrix} + \begin{vmatrix}
+		a & b & c \\
+		y_1 & y_2 & y_3 \\
+		u & v & w \\
+	\end{vmatrix}$
+	\item Định thức không đổi khi lấy dòng này + hoặc - với k lần dòng khác (tương tự cho cột)
+\end{enumerate}
+\begin{tikzpicture}
+	\draw[pattern=north west lines, pattern color=blue] (0,0) rectangle (1em,1em);
+\end{tikzpicture}
+\textbf{Tính chất đẹp} \\
+\begin{enumerate}[label=\arabic{enumi}$^0$.,leftmargin=*]
+	\item $\det{(AB)} = \det{(A)} \times \det{(B)}$ \\
+	*Hệ quả $\det{(A^k)}= (\det{A})^k$
+	\item Cho số $\alpha$ và ma trận A vuông cấp n
+	\begin{itemize}
+		\item $\det{\alpha A} = (\alpha)^n \times \det{A}$
+		\item $\det{-A} = (-1)^n \times \det{A}$
+	\end{itemize}
+	\item Định thức của ma trận tam giác, đường chéo thì tích các phần tử nằm trên đường chéo chính. \\
+	$\begin{vmatrix}
+		a_{11} & a_{12} & a_{13} \\
+		0 & a_{22} & a_{23} \\
+		0 & 0 & a_{33} \\
+	\end{vmatrix} = a_{11}.a_{22}.a_{33} \\
+	\begin{vmatrix}
+		d_{1} & 0& 0 \\
+		0 & d_2 & 0 \\
+		0 & 0 & d_3 \\
+	\end{vmatrix} = d_1.d_2.d_3$\\
+	Suy ra: $|I| = \begin{vmatrix}
+		1 & & & \bigzero\\
+		  & 1& & \\
+		  & & \ddots& \\
+		  &\bigzero & & & 1\\
+	\end{vmatrix}=1$
+\end{enumerate}
